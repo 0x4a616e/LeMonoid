@@ -1,4 +1,4 @@
-package tuple;
+package de.jangassen.lemonoid.tuple;
 
 import java.util.Objects;
 
@@ -21,7 +21,7 @@ public class Tuple4<T1, T2, T3, T4> {
 
   @Override
   public String toString() {
-    return "tuple.Tuple4 [" + "_1=" + _1 + ", _2=" + _2 + ", _3=" + _3 + ", _4=" + _4 + ']';
+    return "de.jangassen.lemonoid.tuple.Tuple4 [" + "_1=" + _1 + ", _2=" + _2 + ", _3=" + _3 + ", _4=" + _4 + ']';
   }
 
   @Override

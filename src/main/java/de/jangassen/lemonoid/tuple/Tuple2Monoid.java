@@ -1,4 +1,4 @@
-package tuple;
+package de.jangassen.lemonoid.tuple;
 
 import de.jangassen.lemonoid.Monoid;
 

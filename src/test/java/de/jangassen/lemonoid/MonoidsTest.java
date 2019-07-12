@@ -2,13 +2,13 @@ package de.jangassen.lemonoid;
 
 import org.junit.Assert;
 import org.junit.Test;
-import tuple.Tuple2;
-import tuple.Tuple2Monoid;
-import tuple.Tuple3;
-import tuple.Tuple3Monoid;
-import tuple.Tuple4;
-import tuple.Tuple4Monoid;
-import tuple.Tuples;
+import de.jangassen.lemonoid.tuple.Tuple2;
+import de.jangassen.lemonoid.tuple.Tuple2Monoid;
+import de.jangassen.lemonoid.tuple.Tuple3;
+import de.jangassen.lemonoid.tuple.Tuple3Monoid;
+import de.jangassen.lemonoid.tuple.Tuple4;
+import de.jangassen.lemonoid.tuple.Tuple4Monoid;
+import de.jangassen.lemonoid.tuple.Tuples;
 
 import java.util.Arrays;
 import java.util.HashMap;

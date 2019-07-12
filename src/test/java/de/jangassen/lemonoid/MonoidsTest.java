@@ -11,7 +11,6 @@ import de.jangassen.lemonoid.tuple.Tuple4Monoid;
 import de.jangassen.lemonoid.tuple.Tuples;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -35,6 +34,7 @@ import static de.jangassen.lemonoid.Monoids.sumDouble;
 import static de.jangassen.lemonoid.Monoids.sumFloat;
 import static de.jangassen.lemonoid.Monoids.sumInt;
 import static de.jangassen.lemonoid.Monoids.sumLong;
+import static de.jangassen.lemonoid.util.MapUtils.mapOf;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 
@@ -175,12 +175,9 @@ public class MonoidsTest {
     Tuple3Monoid<Integer, Integer, Map<String, Integer>> tuple3Monoid = Tuple3Monoid.of(sumInt(), maxInt(), map(sumInt()));
 
     Tuple3<Integer, Integer, Map<String, Integer>> result =
-        foldMap(words, tuple3Monoid, word -> Tuples.of(1, word.length(), mapOf(word)));
+        foldMap(words, tuple3Monoid, word -> Tuples.of(1, word.length(), mapOf(word, 1)));
 
-    Map<String, Integer> wordCount = new HashMap<>();
-    wordCount.put("abcde", 1);
-    wordCount.put("xyz", 2);
-    wordCount.put("lala", 1);
+    Map<String, Integer> wordCount = mapOf("abcde", 1, "xyz", 2, "lala", 1);
 
     Assert.assertEquals(4, (int)result._1);
     Assert.assertEquals(5, (int)result._2);
@@ -195,22 +192,13 @@ public class MonoidsTest {
         .of(sumInt(), maxInt(), map(sumInt()), concatString());
 
     Tuple4<Integer, Integer, Map<String, Integer>, String> result =
-        foldMap(words, tuple4Monoid, word -> Tuples.of(1, word.length(), mapOf(word), word));
+        foldMap(words, tuple4Monoid, word -> Tuples.of(1, word.length(), mapOf(word, 1), word));
 
-    Map<String, Integer> wordCount = new HashMap<>();
-    wordCount.put("abcde", 1);
-    wordCount.put("xyz", 2);
-    wordCount.put("lala", 1);
+    Map<String, Integer> wordCount = mapOf("abcde", 1, "xyz", 2, "lala", 1);
 
     Assert.assertEquals(4, (int)result._1);
     Assert.assertEquals(5, (int)result._2);
     Assert.assertEquals(wordCount, result._3);
     Assert.assertEquals("abcdexyzlalaxyz", result._4);
-  }
-
-  private static Map<String, Integer> mapOf(String value) {
-    Map<String, Integer> map = new HashMap<>();
-    map.put(value, 1);
-    return map;
   }
 }
